@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primaryColor"
+    android:paddingTop="@dimen/app_bar_top_padding"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+    app:theme="@style/MyCustomToolBarTheme">
+
+    <!-- app:theme es para cambiar la barra de arrriba para que la letra sea negra en vez de balnca
+    app:popupTheme es para que al darle a los 3 puntos de setting el background sea negro y no blanco
+    -->
+
+
+</android.support.v7.widget.Toolbar>
