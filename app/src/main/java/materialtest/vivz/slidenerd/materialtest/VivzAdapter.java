@@ -1,7 +1,7 @@
 package materialtest.vivz.slidenerd.materialtest;
 
 import android.content.Context;
-import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -73,6 +73,7 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
             itemView.setOnClickListener(this);
             title = (TextView) itemView.findViewById(R.id.listText);
             icon = (ImageView) itemView.findViewById(R.id.listIcon);
+            title.setTextColor(Color.GRAY);
             //icon.setOnClickListener(this);
         }
 
@@ -81,7 +82,7 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
             //Toast.makeText(context, "item selected " + getAdapterPosition(),
             // Toast.LENGTH_SHORT).show();
             //delete(getAdapterPosition());
-            context.startActivity(new Intent(context, SubActivity.class));
+            //context.startActivity(new Intent(context, SubActivity.class));
             if (clickListener != null) {
                 clickListener.itemClicked(v, getAdapterPosition());
             }
