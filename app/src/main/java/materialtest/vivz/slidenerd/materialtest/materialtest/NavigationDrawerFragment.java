@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest;
+package materialtest.vivz.slidenerd.materialtest.materialtest;
 
 
 import android.content.Context;
@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import materialtest.vivz.slidenerd.materialtest.R;
 
 
 /**

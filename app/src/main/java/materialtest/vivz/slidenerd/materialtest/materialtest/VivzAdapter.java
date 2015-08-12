@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest;
+package materialtest.vivz.slidenerd.materialtest.materialtest;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.List;
+
+import materialtest.vivz.slidenerd.materialtest.R;
 
 /**
  * Creado por soft12 el 10/08/2015.

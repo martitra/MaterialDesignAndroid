@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest;
+package materialtest.vivz.slidenerd.materialtest.materialtest;
 
 import android.content.Context;
 import android.graphics.Paint;
