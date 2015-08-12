@@ -1,6 +1,7 @@
 package materialtest.vivz.slidenerd.materialtest.materialtest;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ImageSpan;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager mPager;
     private SlidingTabLayout mTabs;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,17 @@ public class MainActivity extends AppCompatActivity {
         mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        mTabs.setCustomTabView(R.layout.custom_tab_view, R.id.tabText);
+        mTabs.setDistributeEvenly(true);
+        // la linea de arriba hace que la linea de arriba de las tabs se mueva cuando deslizamos
+        // si no nos pone una a lo largo y al desplazarnos se quita
+        mTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+            //esto es para poner el color de la linea que va por debajo de los iconos
+            @Override
+            public int getIndicatorColor(int position) {
+                return getResources().getColor(R.color.accentColor);
+            }
+        });
         mTabs.setViewPager(mPager);
     }
 
@@ -103,11 +116,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class MyPagerAdapter extends FragmentPagerAdapter {
-        String[] tabs;
+        int icons[] = {R.drawable.ic_action_home, R.drawable.ic_action_articles,
+                R.drawable.ic_action_personal};
+        String[] tabText = getResources().getStringArray(R.array.tabs);
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
-            tabs = getResources().getStringArray(R.array.tabs);
+            tabText = getResources().getStringArray(R.array.tabs);
         }
 
         @Override
@@ -118,7 +133,14 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return tabs[position];
+            Drawable drawable = getResources().getDrawable(icons[position], getTheme());
+            assert drawable != null;
+            drawable.setBounds(0, 0, 64, 64);// left, top, right, bottom
+            ImageSpan imageSpan = new ImageSpan(drawable);
+            SpannableString spannableString = new SpannableString(" ");
+            spannableString.setSpan(imageSpan, 0, spannableString.length(),
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            return spannableString;
         }
 
         @Override

@@ -1,7 +1,6 @@
 package materialtest.vivz.slidenerd.materialtest.materialtest;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -75,7 +74,7 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
             itemView.setOnClickListener(this);
             title = (TextView) itemView.findViewById(R.id.listText);
             icon = (ImageView) itemView.findViewById(R.id.listIcon);
-            title.setTextColor(Color.GRAY);
+            //title.setTextColor(Color.GRAY);
             //icon.setOnClickListener(this);
         }
 

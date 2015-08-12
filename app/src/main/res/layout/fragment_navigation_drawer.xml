@@ -8,7 +8,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DADADA"
         tools:context="materialtest.vivz.slidenerd.materialtest.materialtest.NavigationDrawerFragment">
 
         <LinearLayout
@@ -30,9 +29,7 @@
             android:id="@+id/drawerList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="205dp"
-            android:touchscreenBlocksFocus="false">
-
+            android:layout_marginTop="205dp">
         </android.support.v7.widget.RecyclerView>
 
     </RelativeLayout>
