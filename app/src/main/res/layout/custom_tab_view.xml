@@ -3,7 +3,7 @@
     android:id="@+id/tabContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/custom_bg"
+    android:background="@drawable/tab_bg"
     android:orientation="vertical"
     android:padding="8dp">
 

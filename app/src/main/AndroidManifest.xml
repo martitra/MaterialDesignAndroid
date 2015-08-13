@@ -23,6 +23,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".materialtest.MainActivity" />
         </activity>
+        <activity
+            android:name=".materialtest.ActivityUsingTabLibrary"
+            android:label="@string/title_activity_tab">
+
+        </activity>
     </application>
 
 </manifest>

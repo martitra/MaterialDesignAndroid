@@ -54,13 +54,8 @@ public class MainActivity extends AppCompatActivity {
         mTabs.setDistributeEvenly(true);
         // la linea de arriba hace que la linea de arriba de las tabs se mueva cuando deslizamos
         // si no nos pone una a lo largo y al desplazarnos se quita
-        mTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            //esto es para poner el color de la linea que va por debajo de los iconos
-            @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(R.color.accentColor);
-            }
-        });
+        mTabs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        mTabs.setSelectedIndicatorColors(getResources().getColor(R.color.accentColor));
         mTabs.setViewPager(mPager);
     }
 
@@ -86,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if (id == R.id.navigate) {
             startActivity(new Intent(this, SubActivity.class));
+        }
+        if (R.id.action_tabs_using_library == id) {
+            startActivity(new Intent(this, ActivityUsingTabLibrary.class));
         }
 
         return super.onOptionsItemSelected(item);

@@ -3,6 +3,7 @@ package materialtest.vivz.slidenerd.materialtest.materialtest;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -94,7 +95,7 @@ public class NavigationDrawerFragment extends Fragment implements VivzAdapter.Cl
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
         adapter = new VivzAdapter(getActivity(), getData());
         adapter.setClickListener(this);
-        //recyclerView.setBackgroundColor(Color.WHITE);
+        recyclerView.setBackgroundColor(Color.WHITE);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(),
