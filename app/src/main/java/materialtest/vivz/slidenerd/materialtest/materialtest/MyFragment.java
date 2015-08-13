@@ -14,9 +14,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import materialtest.vivz.slidenerd.materialtest.R;
+import materialtest.vivz.slidenerd.materialtest.network.VolleySingleton;
 
 /**
  * Creado por soft12 el 12/08/2015.
@@ -52,7 +52,7 @@ public class MyFragment extends Fragment {
         * their JSON API which will be used in our app
         *
         * */
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        RequestQueue requestQueue = VolleySingleton.getsInstance().getRequestQueue();
         StringRequest request = new StringRequest(Request.Method.GET, "http://php.net/", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
