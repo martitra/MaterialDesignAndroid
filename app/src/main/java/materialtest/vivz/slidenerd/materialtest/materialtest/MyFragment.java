@@ -7,6 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import materialtest.vivz.slidenerd.materialtest.R;
 
@@ -33,6 +41,30 @@ public class MyFragment extends Fragment {
         if (bundle != null) {
             textView.setText("The Page Number is " + bundle.getInt("position"));
         }
+        /* ESTO NO VE VA PORQUE NO TENGO INTERNET EN EL ADB */
+
+        /*
+        * This Android Tutorial shows an example of android volley library and rotten tomatoes API.
+        * Construct an object of RequestQueue using Volley.newRequestQueue() and add a StringRequest
+        * to it with Response.Listener and Error.Listener callbacks. If the request is successful
+        * the onResponse method is called in the main thread with the requested data, else onError
+        * is invoked with the appropriate error message. Register at rottentomatoes.com to access
+        * their JSON API which will be used in our app
+        *
+        * */
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        StringRequest request = new StringRequest(Request.Method.GET, "http://php.net/", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Toast.makeText(getActivity(), "RESPONSE " + response, Toast.LENGTH_SHORT).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), "ERROR " + error, Toast.LENGTH_SHORT).show();
+            }
+        });
+        requestQueue.add(request);
         return layout;
     }
 }
