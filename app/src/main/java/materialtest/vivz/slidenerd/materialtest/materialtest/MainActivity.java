@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer,
@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         mTabs.setDistributeEvenly(true);
         // la linea de arriba hace que la linea de arriba de las tabs se mueva cuando deslizamos
         // si no nos pone una a lo largo y al desplazarnos se quita
-        mTabs.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        mTabs.setSelectedIndicatorColors(getResources().getColor(R.color.accentColor));
+        mTabs.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.colorPrimary));
+        mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getBaseContext(), R.color.accentColor));
         mTabs.setViewPager(mPager);
     }
 
@@ -82,8 +82,15 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.navigate) {
             startActivity(new Intent(this, SubActivity.class));
         }
-        if (R.id.action_tabs_using_library == id) {
+        if (id == R.id.action_tabs_using_library) {
             startActivity(new Intent(this, ActivityUsingTabLibrary.class));
+        }
+        if (id == R.id.action_vector_test_activity) {
+            startActivity(new Intent(this, VectorTestActivity.class));
+        }
+
+        if (id == R.id.action_activity_with_sliding_tab_layout) {
+            startActivity(new Intent(this, ActivityWithSlidingTabLayout.class));
         }
 
         return super.onOptionsItemSelected(item);

@@ -21,4 +21,7 @@
         <item>TAB 5</item>
         <item>TAB 6</item>
     </string-array>
+    <string name="title_activity_vector_test">VectorTestActivity</string>
+    <string name="action_vector_test_activity">Vector Test Activity</string>
+    <string name="action_activity_with_sliding_tab_layout">Activity with sliding tab layout</string>
 </resources>

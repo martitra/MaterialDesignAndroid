@@ -3,6 +3,7 @@
     package="materialtest.vivz.slidenerd.materialtest">
 
     <uses-permission android:name="ANDROID.PERMISSION.INTERNET" />
+
     <application
         android:name=".materialtest.MyApplication"
         android:allowBackup="true"
@@ -27,9 +28,13 @@
         </activity>
         <activity
             android:name=".materialtest.ActivityUsingTabLibrary"
-            android:label="@string/title_activity_tab">
-
-        </activity>
+            android:label="@string/title_activity_tab" />
+        <activity
+            android:name=".materialtest.VectorTestActivity"
+            android:label="@string/title_activity_vector_test" />
+        <activity
+            android:name=".materialtest.ActivityWithSlidingTabLayout"
+            android:label="@string/action_activity_with_sliding_tab_layout" />
     </application>
 
 </manifest>
