@@ -25,7 +25,7 @@ import it.neokree.materialtabs.MaterialTabListener;
 import materialtest.vivz.slidenerd.materialtest.R;
 import materialtest.vivz.slidenerd.materialtest.fragments.FragmentBoxOffice;
 import materialtest.vivz.slidenerd.materialtest.fragments.FragmentSearch;
-import materialtest.vivz.slidenerd.materialtest.fragments.FragmentUpcoming;
+import materialtest.vivz.slidenerd.materialtest.fragments.FragmentUpComing;
 import materialtest.vivz.slidenerd.materialtest.fragments.NavigationDrawerFragment;
 
 public class MainActivity extends AppCompatActivity implements MaterialTabListener {
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
                     fragment = FragmentBoxOffice.newInstance("", "");
                     break;
                 case MOVIES_UPCOMING:
-                    fragment = FragmentUpcoming.newInstance("", "");
+                    fragment = FragmentUpComing.newInstance("", "");
                     break;
             }
             return fragment;
