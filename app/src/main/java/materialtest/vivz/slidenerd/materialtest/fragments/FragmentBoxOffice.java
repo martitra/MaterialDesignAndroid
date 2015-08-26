@@ -8,10 +8,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -71,6 +78,7 @@ public class FragmentBoxOffice extends Fragment {
     private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private AdapterBoxOffice adapterBoxOffice;
     private RecyclerView listMovieHits;
+    private TextView textVolleyError;
 
 
     public FragmentBoxOffice() {
@@ -125,6 +133,7 @@ public class FragmentBoxOffice extends Fragment {
                     @Override
                     public void onResponse(JSONObject response) {
                         //L.t(getActivity(),response.toString());
+                        textVolleyError.setVisibility(View.GONE);
                         listMovies = parseJSONResponse(response);
                         adapterBoxOffice.setMovieList(listMovies);
                     }
@@ -132,27 +141,45 @@ public class FragmentBoxOffice extends Fragment {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                handleVolleyError(error);
             }
         });
         requestQueue.add(request);
+    }
+
+    private void handleVolleyError(VolleyError error) {
+        textVolleyError.setVisibility(View.VISIBLE);
+
+        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+            textVolleyError.setText(R.string.error_timeout);
+        } else if (error instanceof AuthFailureError) {
+            textVolleyError.setText(R.string.error_auth_failure);
+        } else if (error instanceof ServerError) {
+            textVolleyError.setText(R.string.error_auth_failure);
+        } else if (error instanceof NetworkError) {
+            textVolleyError.setText(R.string.error_network);
+        } else if (error instanceof ParseError) {
+            textVolleyError.setText(R.string.error_parser);
+        }
     }
 
     private ArrayList<Movie> parseJSONResponse(JSONObject response) {
 
         ArrayList<Movie> listMovies = new ArrayList<>();
         if (response != null || response.length() > 0) {
-            long id = 0;
-            String title = Constants.NA;
-            String releaseDate = Constants.NA;
-            int audiendceScore = -1;
-            String synopsis = Constants.NA;
-            String urlThumbnail = Constants.NA;
             try {
                 //StringBuilder data = new StringBuilder();
                 if (response.has(KEY_MOVIES)) {
                     JSONArray arrayMovies = response.getJSONArray(KEY_MOVIES);
                     for (int i = 0; i < arrayMovies.length(); i++) {
+
+                        long id = 0;
+                        String title = Constants.NA;
+                        String releaseDate = Constants.NA;
+                        int audiendceScore = -1;
+                        String synopsis = Constants.NA;
+                        String urlThumbnail = Constants.NA;
+
                         JSONObject currentMovie = arrayMovies.getJSONObject(i);
 
                         if (currentMovie.has(KEY_ID) && !currentMovie.isNull(KEY_ID)) {
@@ -226,6 +253,7 @@ public class FragmentBoxOffice extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_back_office, container, false);
+        textVolleyError = (TextView) view.findViewById(R.id.textVolleyError);
         listMovieHits = (RecyclerView) view.findViewById(R.id.listMovieHits);
         listMovieHits.setLayoutManager(new LinearLayoutManager(getActivity()));
 
