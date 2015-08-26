@@ -16,8 +16,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
+import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
@@ -74,14 +79,43 @@ public class MainActivity extends AppCompatActivity implements MaterialTabListen
                             .setTabListener(this)
             );
         }
-        /*mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
+
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.ic_launcher);
+
+        FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
+                .setContentView(imageView)
+                .build();
+
+        ImageView iconSortName = new ImageView(this);
+        iconSortName.setImageResource(R.drawable.ic_action_home);
+        ImageView iconSortDate = new ImageView(this);
+        iconSortDate.setImageResource(R.drawable.ic_action_personal);
+        ImageView iconSortRatings = new ImageView(this);
+        iconSortRatings.setImageResource(R.drawable.ic_action_articles);
+
+        SubActionButton.Builder itemBuilder = new SubActionButton.Builder(this);
+        SubActionButton buttonSortName = itemBuilder.setContentView(iconSortName).build();
+        SubActionButton buttonSortDate = itemBuilder.setContentView(iconSortDate).build();
+        SubActionButton buttonSortRating = itemBuilder.setContentView(iconSortRatings).build();
+
+        FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
+                .addSubActionView(buttonSortName)
+                .addSubActionView(buttonSortDate)
+                .addSubActionView(buttonSortRating)
+                .attachTo(actionButton)
+                .build();
+
+        /*
+        mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
         mTabs.setCustomTabView(R.layout.custom_tab_view, R.id.tabText);
         mTabs.setDistributeEvenly(true);
         // la linea de arriba hace que la linea de arriba de las tabs se mueva cuando deslizamos
         // si no nos pone una a lo largo y al desplazarnos se quita
         mTabs.setBackgroundColor(ContextCompat.getColor(getBaseContext(), R.color.colorPrimary));
         mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getBaseContext(), R.color.accentColor));
-        mTabs.setViewPager(viewPager);*/
+        mTabs.setViewPager(viewPager);
+        */
     }
 
     @Override

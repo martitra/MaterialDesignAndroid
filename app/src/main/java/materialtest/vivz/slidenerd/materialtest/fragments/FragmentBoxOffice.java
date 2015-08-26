@@ -198,7 +198,7 @@ public class FragmentBoxOffice extends Fragment {
                                 releaseDate = objectReleaseDates.getString(KEY_THEATER);
                             }
                         }
-                        if (currentMovie.has(KEY_AUDIENCE_SCORE) && !currentMovie.isNull(KEY_AUDIENCE_SCORE)) {
+                        if (currentMovie.has(KEY_RATINGS) && !currentMovie.isNull(KEY_RATINGS)) {
                             //get the audience score from the current movie
                             JSONObject objectRatings = currentMovie.getJSONObject(KEY_RATINGS);
                             if (objectRatings != null && objectRatings.has(KEY_AUDIENCE_SCORE)
@@ -210,7 +210,7 @@ public class FragmentBoxOffice extends Fragment {
                             //get the synopsis from the current movie
                             synopsis = currentMovie.getString(KEY_SYNOPSIS);
                         }
-                        if (currentMovie.has(KEY_THUMBNAIL) && !currentMovie.isNull(KEY_THUMBNAIL)) {
+                        if (currentMovie.has(KEY_POSTERS) && !currentMovie.isNull(KEY_POSTERS)) {
                             //get the thumbnail from the current movie
                             JSONObject objectPosters = currentMovie.getJSONObject(KEY_POSTERS);
                             if (objectPosters != null && objectPosters.has(KEY_THUMBNAIL)
