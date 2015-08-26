@@ -51,6 +51,7 @@ public class ActivityWithSlidingTabLayout extends AppCompatActivity {
         mTabs.setViewPager(mPager);
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_activity_using_tab_library, menu);
