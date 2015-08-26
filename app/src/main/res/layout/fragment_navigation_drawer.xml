@@ -6,7 +6,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="materialtest.vivz.slidenerd.materialtest.materialtest.NavigationDrawerFragment">
+        tools:context="materialtest.vivz.slidenerd.materialtest.fragments.NavigationDrawerFragment">
 
         <LinearLayout
             android:id="@+id/containerDrawerImage"

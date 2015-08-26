@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest.materialtest;
+package materialtest.vivz.slidenerd.materialtest.extras;
 
 import android.os.Build;
 

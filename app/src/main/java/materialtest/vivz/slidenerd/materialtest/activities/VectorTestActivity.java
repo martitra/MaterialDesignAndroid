@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest.materialtest;
+package materialtest.vivz.slidenerd.materialtest.activities;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Animatable;
@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import com.telly.mrvector.MrVector;
 
 import materialtest.vivz.slidenerd.materialtest.R;
+import materialtest.vivz.slidenerd.materialtest.extras.Util;
 
 public class VectorTestActivity extends AppCompatActivity {
 

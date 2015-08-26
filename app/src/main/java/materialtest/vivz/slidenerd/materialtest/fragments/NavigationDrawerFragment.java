@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest.materialtest;
+package materialtest.vivz.slidenerd.materialtest.fragments;
 
 
 import android.content.Context;
@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import materialtest.vivz.slidenerd.materialtest.R;
+import materialtest.vivz.slidenerd.materialtest.adapters.VivzAdapter;
+import materialtest.vivz.slidenerd.materialtest.pojo.Information;
 
 
 /**
@@ -70,8 +72,8 @@ public class NavigationDrawerFragment extends Fragment implements VivzAdapter.Cl
         //for (int i = 0; i < titles.length && i < icons.length; i++) {
         for (int i = 0; i < 100; i++) {
             Information current = new Information();
-            current.iconId = icons[i % icons.length];
-            current.title = titles[i % titles.length];
+            current.setIconId(icons[i % icons.length]);
+            current.setTitle(titles[i % titles.length]);
             data.add(current);
         }
         return data;

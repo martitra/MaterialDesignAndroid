@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest.materialtest;
+package materialtest.vivz.slidenerd.materialtest.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;

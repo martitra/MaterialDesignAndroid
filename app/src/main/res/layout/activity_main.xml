@@ -9,16 +9,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context="materialtest.vivz.slidenerd.materialtest.materialtest.MainActivity">
+        tools:context="materialtest.vivz.slidenerd.materialtest.activities.MainActivity">
 
         <include
             android:id="@+id/app_bar"
             layout="@layout/app_bar" />
 
-        <materialtest.vivz.slidenerd.materialtest.tabs.SlidingTabLayout
+        <!--<materialtest.vivz.slidenerd.materialtest.tabs.SlidingTabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />-->
+        <it.neokree.materialtabs.MaterialTabHost
+            android:id="@+id/materialTabHost"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_below="@id/app_bar"
+            app:accentColor="@color/accentColor"
+            app:hasIcons="true"
+            app:iconColor="@android:color/white"
+            app:primaryColor="@color/colorPrimary" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"
@@ -30,7 +39,7 @@
 
     <fragment
         android:id="@+id/fragment_navigation_drawer"
-        android:name="materialtest.vivz.slidenerd.materialtest.materialtest.NavigationDrawerFragment"
+        android:name="materialtest.vivz.slidenerd.materialtest.fragments.NavigationDrawerFragment"
         android:layout_width="@dimen/nav_drawer_width"
         android:layout_height="match_parent"
         android:layout_gravity="start"

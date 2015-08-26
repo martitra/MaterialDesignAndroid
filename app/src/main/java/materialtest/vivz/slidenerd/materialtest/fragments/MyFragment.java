@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest.materialtest;
+package materialtest.vivz.slidenerd.materialtest.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

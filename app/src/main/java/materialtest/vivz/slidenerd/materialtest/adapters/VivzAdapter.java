@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest.materialtest;
+package materialtest.vivz.slidenerd.materialtest.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.List;
 
 import materialtest.vivz.slidenerd.materialtest.R;
+import materialtest.vivz.slidenerd.materialtest.pojo.Information;
 
 /**
  * Creado por soft12 el 10/08/2015.
@@ -47,8 +48,8 @@ public class VivzAdapter extends RecyclerView.Adapter<VivzAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Information current = data.get(position);
         Log.d("VIVZ", "OnBindViewHolder called " + position);
-        holder.title.setText(current.title);
-        holder.icon.setImageResource(current.iconId);
+        holder.title.setText(current.getTitle());
+        holder.icon.setImageResource(current.getIconId());
     }
 
     public void setClickListener(ClickListener clickListener) {

@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest.materialtest;
+package materialtest.vivz.slidenerd.materialtest.activities;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import materialtest.vivz.slidenerd.materialtest.R;
+import materialtest.vivz.slidenerd.materialtest.fragments.MyFragment;
 import materialtest.vivz.slidenerd.materialtest.tabs.SlidingTabLayout;
 
 /**

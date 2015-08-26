@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="materialtest.vivz.slidenerd.materialtest.materialtest.ActivityUsingTabLibrary">
+    tools:context="materialtest.vivz.slidenerd.materialtest.activities.ActivityUsingTabLibrary">
 
     <include
         android:id="@+id/app_bar"

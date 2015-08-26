@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.materialtest.materialtest;
+package materialtest.vivz.slidenerd.materialtest.activities;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import it.neokree.materialtabs.MaterialTab;
 import it.neokree.materialtabs.MaterialTabHost;
 import it.neokree.materialtabs.MaterialTabListener;
 import materialtest.vivz.slidenerd.materialtest.R;
+import materialtest.vivz.slidenerd.materialtest.fragments.MyFragment;
 
 /**
  * Creado por soft12 el 12/08/2015.
@@ -48,7 +49,6 @@ public class ActivityUsingTabLibrary extends AppCompatActivity implements Materi
                 tabHost.setSelectedNavigationItem(position);
             }
         });
-
         for (int i = 0; i < adapter.getCount(); i++) {
             tabHost.addTab(
                     tabHost.newTab()
@@ -97,7 +97,6 @@ public class ActivityUsingTabLibrary extends AppCompatActivity implements Materi
     public void onTabUnselected(MaterialTab materialTab) {
 
     }
-
 
     public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         int icons[] = {R.drawable.ic_action_home,
