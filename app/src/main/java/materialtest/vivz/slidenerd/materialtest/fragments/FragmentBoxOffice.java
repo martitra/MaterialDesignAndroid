@@ -36,6 +36,8 @@ import java.util.Date;
 import materialtest.vivz.slidenerd.materialtest.R;
 import materialtest.vivz.slidenerd.materialtest.adapters.AdapterBoxOffice;
 import materialtest.vivz.slidenerd.materialtest.extras.Constants;
+import materialtest.vivz.slidenerd.materialtest.extras.MovieSorter;
+import materialtest.vivz.slidenerd.materialtest.extras.SortListener;
 import materialtest.vivz.slidenerd.materialtest.logging.L;
 import materialtest.vivz.slidenerd.materialtest.materialtest.MyApplication;
 import materialtest.vivz.slidenerd.materialtest.network.VolleySingleton;
@@ -62,7 +64,7 @@ import static materialtest.vivz.slidenerd.materialtest.extras.UrlEndpoints.URL_P
  * Use the {@link FragmentBoxOffice#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentBoxOffice extends Fragment {
+public class FragmentBoxOffice extends Fragment implements SortListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -79,6 +81,8 @@ public class FragmentBoxOffice extends Fragment {
     private AdapterBoxOffice adapterBoxOffice;
     private RecyclerView listMovieHits;
     private TextView textVolleyError;
+    private MovieSorter movieSorter = new MovieSorter();
+    ;
 
 
     public FragmentBoxOffice() {
@@ -238,7 +242,7 @@ public class FragmentBoxOffice extends Fragment {
                         }
 
                     }
-                    L.t(getActivity(), listMovies.toString());
+                    //L.t(getActivity(), listMovies.toString());
                 }
 
             } catch (JSONException e) {
@@ -263,4 +267,22 @@ public class FragmentBoxOffice extends Fragment {
         return view;
     }
 
+    @Override
+    public void onSortByName() {
+        L.t(getActivity(), "sort name BoxOffice");
+        movieSorter.sortMoviesByName(listMovies);
+        adapterBoxOffice.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onSortByDate() {
+        movieSorter.sortMoviesByDate(listMovies);
+        adapterBoxOffice.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onSortByRating() {
+        movieSorter.sortMoviesByRating(listMovies);
+        adapterBoxOffice.notifyDataSetChanged();
+    }
 }
