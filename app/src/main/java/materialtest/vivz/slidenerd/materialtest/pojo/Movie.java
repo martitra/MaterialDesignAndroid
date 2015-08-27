@@ -1,12 +1,27 @@
 package materialtest.vivz.slidenerd.materialtest.pojo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
+
+import materialtest.vivz.slidenerd.materialtest.logging.L;
 
 /**
  * Creado por soft12 el 25/08/2015.
  */
-public class Movie {
+public class Movie implements Parcelable {
 
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+        public Movie createFromParcel(Parcel in) {
+            L.m("create form parcel :Movie");
+            return new Movie(in);
+        }
+
+        public Movie[] newArray(int size) {
+            return new Movie[0];
+        }
+    };
     private Long id;
     private String title;
     private Date releaseDateTheater;
@@ -20,6 +35,20 @@ public class Movie {
 
     public Movie() {
     }
+
+    public Movie(Parcel input) {
+        id = input.readLong();
+        title = input.readString();
+        releaseDateTheater = new Date(input.readLong());
+        audienceScore = input.readInt();
+        synopsis = input.readString();
+        urlThumbnail = input.readString();
+        urlSelf = input.readString();
+        urlCast = input.readString();
+        urlReviews = input.readString();
+        urlSimilar = input.readString();
+    }
+
 
     public Movie(Long id, String title, Date releaseDateTheater,
                  int audienceScore, String synopsis, String urlThumbnail,
@@ -124,5 +153,27 @@ public class Movie {
                 "Synopsis = " + synopsis +
                 "Score = " + audienceScore +
                 "UrlThumbnail = " + urlThumbnail;
+    }
+
+    @Override
+    public int describeContents() {
+        L.m("describe Content Movie");
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        L.m("write to Parcel Movie");
+        dest.writeLong(id);
+        dest.writeString(title);
+        dest.writeLong(releaseDateTheater.getTime());
+        dest.writeInt(audienceScore);
+        dest.writeString(synopsis);
+        dest.writeString(urlThumbnail);
+        dest.writeString(urlSelf);
+        dest.writeString(urlCast);
+        dest.writeString(urlReviews);
+        dest.writeString(urlSimilar);
+
     }
 }
