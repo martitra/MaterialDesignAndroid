@@ -3,6 +3,8 @@ package materialtest.vivz.slidenerd.materialtest.materialtest;
 import android.app.Application;
 import android.content.Context;
 
+import materialtest.vivz.slidenerd.materialtest.database.MoviesDatabase;
+
 /**
  * Creado por soft12 el 13/08/2015.
  */
@@ -22,6 +24,8 @@ public class MyApplication extends Application {
 
     private static MyApplication sInstance;
 
+    private static MoviesDatabase mDatabase;
+
     public static MyApplication getInstance() {
         return sInstance;
     }
@@ -30,9 +34,17 @@ public class MyApplication extends Application {
         return sInstance.getApplicationContext();
     }
 
+    public synchronized static MoviesDatabase getWritableDatabase() {
+        if (mDatabase == null) {
+            mDatabase = new MoviesDatabase(getAppContext());
+        }
+        return mDatabase;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        mDatabase = new MoviesDatabase(this);
     }
 }
