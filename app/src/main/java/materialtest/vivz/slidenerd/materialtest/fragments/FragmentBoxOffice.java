@@ -24,19 +24,21 @@ import java.util.ArrayList;
 
 import materialtest.vivz.slidenerd.materialtest.R;
 import materialtest.vivz.slidenerd.materialtest.adapters.AdapterBoxOffice;
+import materialtest.vivz.slidenerd.materialtest.callbacks.BoxOfficeMoviesLoadedListener;
 import materialtest.vivz.slidenerd.materialtest.extras.MovieSorter;
 import materialtest.vivz.slidenerd.materialtest.extras.SortListener;
 import materialtest.vivz.slidenerd.materialtest.logging.L;
 import materialtest.vivz.slidenerd.materialtest.materialtest.MyApplication;
 import materialtest.vivz.slidenerd.materialtest.network.VolleySingleton;
 import materialtest.vivz.slidenerd.materialtest.pojo.Movie;
+import materialtest.vivz.slidenerd.materialtest.task.TaskLoadMoviesBoxOffice;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FragmentBoxOffice#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentBoxOffice extends Fragment implements SortListener {
+public class FragmentBoxOffice extends Fragment implements SortListener, BoxOfficeMoviesLoadedListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -53,12 +55,11 @@ public class FragmentBoxOffice extends Fragment implements SortListener {
     private AdapterBoxOffice adapterBoxOffice;
     private RecyclerView listMovieHits;
     private TextView textVolleyError;
-    private MovieSorter movieSorter = new MovieSorter();
-    ;
-
+    private MovieSorter movieSorter;
 
     public FragmentBoxOffice() {
         // Required empty public constructor
+        movieSorter = new MovieSorter();
     }
 
     /**
@@ -129,6 +130,10 @@ public class FragmentBoxOffice extends Fragment implements SortListener {
         } else {
             //senJsonRequest();
             listMovies = MyApplication.getWritableDatabase().getAllMoviesBoxOffice();
+            if (listMovies.isEmpty()) {
+                L.t(getActivity(), "executing task from fragment");
+                new TaskLoadMoviesBoxOffice(this).execute();
+            }
         }
 
         adapterBoxOffice.setMovieList(listMovies);
@@ -153,5 +158,11 @@ public class FragmentBoxOffice extends Fragment implements SortListener {
     public void onSortByRating() {
         movieSorter.sortMoviesByRating(listMovies);
         adapterBoxOffice.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBoxOfficeMoviesLoaded(ArrayList<Movie> listMovies) {
+        L.t(getActivity(), "onBoxOfficeMoviesLoaded Fragment");
+        adapterBoxOffice.setMovieList(listMovies);
     }
 }
