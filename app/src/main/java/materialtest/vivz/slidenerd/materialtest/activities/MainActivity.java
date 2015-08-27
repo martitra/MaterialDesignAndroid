@@ -1,5 +1,6 @@
 package materialtest.vivz.slidenerd.materialtest.activities;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -29,6 +30,9 @@ import materialtest.vivz.slidenerd.materialtest.fragments.FragmentBoxOffice;
 import materialtest.vivz.slidenerd.materialtest.fragments.FragmentSearch;
 import materialtest.vivz.slidenerd.materialtest.fragments.FragmentUpComing;
 import materialtest.vivz.slidenerd.materialtest.fragments.NavigationDrawerFragment;
+import materialtest.vivz.slidenerd.materialtest.services.MyService;
+import me.tatarka.support.job.JobInfo;
+import me.tatarka.support.job.JobScheduler;
 
 public class MainActivity extends AppCompatActivity
         implements MaterialTabListener, View.OnClickListener {
@@ -39,6 +43,8 @@ public class MainActivity extends AppCompatActivity
     public static final String TAG_SORT_NAME = "sortName";
     public static final String TAG_SORT_DATE = "sortDate";
     public static final String TAG_SORT_RATING = "sortRatings";
+    private static final int JOB_ID = 100;
+    private JobScheduler mJobScheduler;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
     // private SlidingTabLayout mTabs;
@@ -48,6 +54,9 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mJobScheduler = JobScheduler.getInstance(this);
+        constructJob();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
@@ -94,6 +103,16 @@ public class MainActivity extends AppCompatActivity
         mTabs.setSelectedIndicatorColors(ContextCompat.getColor(getBaseContext(), R.color.accentColor));
         mTabs.setViewPager(viewPager);
         */
+    }
+
+    private void constructJob() {
+        JobInfo.Builder builder = new JobInfo.Builder(
+                JOB_ID,
+                new ComponentName(this, MyService.class));
+        builder.setPeriodic(2000)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
+                .setPersisted(true);
+        mJobScheduler.schedule(builder.build());
     }
 
     private void buildFAB() {
@@ -177,7 +196,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onTabSelected(MaterialTab materialTab) {
-
+        viewPager.setCurrentItem(materialTab.getPosition());
     }
 
     @Override
