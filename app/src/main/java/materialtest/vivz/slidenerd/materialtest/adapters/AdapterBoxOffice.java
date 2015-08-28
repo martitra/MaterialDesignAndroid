@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import materialtest.vivz.slidenerd.materialtest.R;
+import materialtest.vivz.slidenerd.materialtest.anim.AnimationUtils;
 import materialtest.vivz.slidenerd.materialtest.extras.Constants;
 import materialtest.vivz.slidenerd.materialtest.network.VolleySingleton;
 import materialtest.vivz.slidenerd.materialtest.pojo.Movie;
@@ -32,6 +33,7 @@ public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.View
     private VolleySingleton volleySingleton;
     private ImageLoader imageLoader;
     private DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
+    private int previousPosition = 0;
 
     public AdapterBoxOffice(Context context) {
         layoutInflater = LayoutInflater.from(context);
@@ -73,6 +75,12 @@ public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.View
         } else {
             holder.movieAudienceScore.setRating(audienceScored / 20.0F);
             holder.movieAudienceScore.setAlpha(1.0F);
+        }
+
+        if (position > previousPosition) {
+            AnimationUtils.animate(holder, true);
+        } else {
+            AnimationUtils.animate(holder, false);
         }
 
 
