@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import materialtest.vivz.slidenerd.materialtest.callbacks.BoxOfficeMoviesLoadedListener;
 import materialtest.vivz.slidenerd.materialtest.pojo.Movie;
-import materialtest.vivz.slidenerd.materialtest.task.TaskLoadMoviesBoxOffice;
 import me.tatarka.support.job.JobParameters;
 import me.tatarka.support.job.JobService;
 
@@ -22,7 +21,7 @@ public class MyService extends JobService implements BoxOfficeMoviesLoadedListen
         //jobFinished(jobParameters, false);
         this.jobParameters = jobParameters;
         //new MyTask(this).execute(jobParameters);
-        new TaskLoadMoviesBoxOffice(this).execute();
+        //new TaskLoadMoviesBoxOffice(this).execute();
         return true;
     }
 

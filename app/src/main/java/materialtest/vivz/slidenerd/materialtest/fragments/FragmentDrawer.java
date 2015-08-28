@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,32 +18,32 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import materialtest.vivz.slidenerd.materialtest.R;
-import materialtest.vivz.slidenerd.materialtest.adapters.VivzAdapter;
+import materialtest.vivz.slidenerd.materialtest.activities.MainActivity;
+import materialtest.vivz.slidenerd.materialtest.adapters.AdapterDrawer;
 import materialtest.vivz.slidenerd.materialtest.pojo.Information;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NavigationDrawerFragment extends Fragment implements VivzAdapter.ClickListener {
+public class FragmentDrawer extends Fragment {
 
     public static final String PREF_FILE_NAME = "testpref";
     public static final String KEY_USER_LEARNED_DRAWER = "user_learned_drawer";
     private RecyclerView recyclerView;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerlayout;
-    private VivzAdapter adapter;
+    private AdapterDrawer adapter;
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
     private View containerView;
 
-    public NavigationDrawerFragment() {
+    public FragmentDrawer() {
         // Required empty public constructor
     }
 
@@ -62,19 +63,18 @@ public class NavigationDrawerFragment extends Fragment implements VivzAdapter.Cl
         return sharedPreferences.getString(preferenceName, defaultValue);
     }
 
-    public static List<Information> getData() {
+    public List<Information> getData() {
         List<Information> data = new ArrayList<>();
-        int[] icons = {R.drawable.ic_number1,
-                R.drawable.ic_number2,
-                R.drawable.ic_number3,
-                R.drawable.ic_number4};
-        String[] titles = {"Vivz", "Amy", "Slidenerd", "Youtube"};
+        int[] icons = {R.drawable.ic_action_search_orange,
+                R.drawable.ic_action_trending_orange,
+                R.drawable.ic_action_upcoming_orange};
+        String[] titles = getResources().getStringArray(R.array.drawers_tabs);
         //for (int i = 0; i < titles.length && i < icons.length; i++) {
-        for (int i = 0; i < 100; i++) {
-            Information current = new Information();
-            current.setIconId(icons[i % icons.length]);
-            current.setTitle(titles[i % titles.length]);
-            data.add(current);
+        for (int i = 0; i < icons.length; i++) {
+            Information information = new Information();
+            information.setIconId(icons[i]);
+            information.setTitle(titles[i]);
+            data.add(information);
         }
         return data;
     }
@@ -95,8 +95,8 @@ public class NavigationDrawerFragment extends Fragment implements VivzAdapter.Cl
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
-        adapter = new VivzAdapter(getActivity(), getData());
-        adapter.setClickListener(this);
+        adapter = new AdapterDrawer(getActivity(), getData());
+        //adapter.setClickListener(this);
         recyclerView.setBackgroundColor(Color.WHITE);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -104,12 +104,14 @@ public class NavigationDrawerFragment extends Fragment implements VivzAdapter.Cl
                 recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(getActivity(), "onClick " + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "onClick " + position, Toast.LENGTH_SHORT).show();
+                mDrawerlayout.closeDrawer(GravityCompat.START);
+                ((MainActivity) getActivity()).onDrawerItemClicked(position - 1);
             }
 
             @Override
             public void onLongClick(View view, int position) {
-                Toast.makeText(getActivity(), "onLongClick " + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "onLongClick " + position, Toast.LENGTH_SHORT).show();
             }
         }));
         return layout;
@@ -155,11 +157,6 @@ public class NavigationDrawerFragment extends Fragment implements VivzAdapter.Cl
             }
         });
         mDrawerlayout.setDrawerListener(mDrawerToggle);
-    }
-
-    @Override
-    public void itemClicked(View view, int position) {
-        //startActivity(new Intent(getActivity(), SubActivity.class));
     }
 
     public interface ClickListener {

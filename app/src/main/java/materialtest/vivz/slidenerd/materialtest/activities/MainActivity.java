@@ -28,9 +28,9 @@ import it.neokree.materialtabs.MaterialTabListener;
 import materialtest.vivz.slidenerd.materialtest.R;
 import materialtest.vivz.slidenerd.materialtest.extras.SortListener;
 import materialtest.vivz.slidenerd.materialtest.fragments.FragmentBoxOffice;
+import materialtest.vivz.slidenerd.materialtest.fragments.FragmentDrawer;
 import materialtest.vivz.slidenerd.materialtest.fragments.FragmentSearch;
 import materialtest.vivz.slidenerd.materialtest.fragments.FragmentUpComing;
-import materialtest.vivz.slidenerd.materialtest.fragments.NavigationDrawerFragment;
 import materialtest.vivz.slidenerd.materialtest.services.MyService;
 import me.tatarka.support.job.JobInfo;
 import me.tatarka.support.job.JobScheduler;
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity
     private ViewPagerAdapter adapter;
     // private SlidingTabLayout mTabs;
     private MaterialTabHost tabHost;
+    private FloatingActionButton mFAB;
+    private FloatingActionMenu mFABMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
+        FragmentDrawer drawerFragment = (FragmentDrawer)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout), toolbar);
@@ -112,6 +114,10 @@ public class MainActivity extends AppCompatActivity
         */
     }
 
+    public void onDrawerItemClicked(int index) {
+        viewPager.setCurrentItem(index);
+    }
+
     private void constructJob() {
         JobInfo.Builder builder = new JobInfo.Builder(
                 JOB_ID,
@@ -127,7 +133,7 @@ public class MainActivity extends AppCompatActivity
         ImageView imageView = new ImageView(this);
         imageView.setImageResource(R.drawable.ic_action_new);
 
-        FloatingActionButton actionButton = new FloatingActionButton.Builder(this)
+        mFAB = new FloatingActionButton.Builder(this)
                 .setContentView(imageView)
                 .setBackgroundDrawable(R.drawable.selector_button_red)
                 .build();
@@ -155,11 +161,11 @@ public class MainActivity extends AppCompatActivity
         buttonSortDate.setOnClickListener(this);
         buttonSortRating.setOnClickListener(this);
 
-        FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(this)
+        mFABMenu = new FloatingActionMenu.Builder(this)
                 .addSubActionView(buttonSortName)
                 .addSubActionView(buttonSortDate)
                 .addSubActionView(buttonSortRating)
-                .attachTo(actionButton)
+                .attachTo(mFAB)
                 .build();
 
     }
@@ -243,9 +249,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public class ViewPagerAdapter extends FragmentStatePagerAdapter {
-        int icons[] = {R.drawable.ic_action_home,
-                R.drawable.ic_action_articles,
-                R.drawable.ic_action_personal
+        int icons[] = {R.drawable.ic_action_search,
+                R.drawable.ic_action_trending,
+                R.drawable.ic_action_upcoming
                 // R.drawable.ic_action_home,
                 //R.drawable.ic_action_articles,
                 // R.drawable.ic_action_personal,
