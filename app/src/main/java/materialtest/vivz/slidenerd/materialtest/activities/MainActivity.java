@@ -197,6 +197,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_activity_with_sliding_tab_layout) {
             startActivity(new Intent(this, ActivityWithSlidingTabLayout.class));
         }
+        if (id == R.id.action_activity_recycler_item_animator) {
+            startActivity(new Intent(this, ActivityRecyclerItemAnimations.class));
+        }
 
         return super.onOptionsItemSelected(item);
     }

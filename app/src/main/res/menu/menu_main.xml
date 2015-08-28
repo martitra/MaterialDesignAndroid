@@ -31,4 +31,9 @@
         android:orderInCategory="500"
         android:title="@string/action_activity_with_sliding_tab_layout"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_activity_recycler_item_animator"
+        android:orderInCategory="600"
+        android:title="@string/action_activity_recycler_item_animator"
+        app:showAsAction="never" />
 </menu>

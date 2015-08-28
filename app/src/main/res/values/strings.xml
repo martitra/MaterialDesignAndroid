@@ -28,4 +28,8 @@
     <string name="error_auth_failure">Oops! RottenTomatoes Says It Doesn\'t Recognize You</string>
     <string name="error_network">Oops! RottenTomatoes Server Just Messed Up</string>
     <string name="error_parser">Oops! Data Received Was An Unreadable Mess</string>
+    <string name="title_activity_activity_recycler_item_animations">ActivityRecyclerItemAnimations
+    </string>
+    <string name="add_item">Add Item</string>
+    <string name="action_activity_recycler_item_animator">Recycler Item Animations</string>
 </resources>

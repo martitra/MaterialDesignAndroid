@@ -164,7 +164,7 @@ public class Movie implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         L.m("write to Parcel Movie");
-        dest.writeLong(id);
+        /*dest.writeLong(id);
         dest.writeString(title);
         dest.writeLong(releaseDateTheater.getTime());
         dest.writeInt(audienceScore);
@@ -173,7 +173,7 @@ public class Movie implements Parcelable {
         dest.writeString(urlSelf);
         dest.writeString(urlCast);
         dest.writeString(urlReviews);
-        dest.writeString(urlSimilar);
+        dest.writeString(urlSimilar);*/
 
     }
 }
