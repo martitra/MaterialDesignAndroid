@@ -49,7 +49,13 @@
 
         <activity
             android:name=".activities.ActivityRecyclerItemAnimations"
-            android:label="@string/title_activity_activity_recycler_item_animations"></activity>
+            android:label="@string/title_activity_activity_recycler_item_animations" />
+        <activity
+            android:name=".activities.ActivityA"
+            android:label="@string/title_activity_"></activity>
+        <activity
+            android:name=".activities.ActivityB"
+            android:label="@string/title_activity_activity_b"></activity>
     </application>
 
 </manifest>

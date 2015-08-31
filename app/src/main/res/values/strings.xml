@@ -37,4 +37,7 @@
     </string>
     <string name="add_item">Add Item</string>
     <string name="action_activity_recycler_item_animator">Recycler Item Animations</string>
+    <string name="title_activity_">ActivityA</string>
+    <string name="title_activity_activity_b">ActivityB</string>
+    <string name="action_activity_a">Activity A</string>
 </resources>

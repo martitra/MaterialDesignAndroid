@@ -206,6 +206,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_activity_recycler_item_animator) {
             startActivity(new Intent(this, ActivityRecyclerItemAnimations.class));
         }
+        if (id == R.id.action_activity_a) {
+            startActivity(new Intent(this, ActivityA.class));
+        }
 
         return super.onOptionsItemSelected(item);
     }
