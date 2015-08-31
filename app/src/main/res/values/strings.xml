@@ -40,4 +40,7 @@
     <string name="title_activity_">ActivityA</string>
     <string name="title_activity_activity_b">ActivityB</string>
     <string name="action_activity_a">Activity A</string>
+    <string name="title_activity_activity_shared">ActivitySharedA</string>
+    <string name="title_activity_activity_shared_b">ActivitySharedB</string>
+    <string name="action_activity_shared_a">Activity Shared A</string>
 </resources>

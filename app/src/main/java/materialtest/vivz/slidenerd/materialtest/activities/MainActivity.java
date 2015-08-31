@@ -209,6 +209,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_activity_a) {
             startActivity(new Intent(this, ActivityA.class));
         }
+        if (id == R.id.action_activity_shared_a) {
+            startActivity(new Intent(this, ActivitySharedA.class));
+        }
 
         return super.onOptionsItemSelected(item);
     }
