@@ -6,11 +6,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="materialtest.vivz.slidenerd.materialtest.activities.ActivityB">
+    tools:context="materialtest.vivz.slidenerd.activities.ActivityB">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_centerInParent="true"
+        android:background="#673AB7"
+        android:transitionName="button1" />
 
 </RelativeLayout>

@@ -1,8 +1,13 @@
 package materialtest.vivz.slidenerd.materialtest.activities;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.TransitionManager;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +30,14 @@ public class ActivityA extends AppCompatActivity implements View.OnClickListener
 //            getWindow().setEnterTransition(slide);
 //        }
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= 21) {
+            TransitionInflater inflater = TransitionInflater.from(this);
+            Transition transition = inflater.inflateTransition(R.transition.transition_a);
+            getWindow().setExitTransition(transition);
+            Slide slide = new Slide();
+            slide.setDuration(5000);
+            getWindow().setReenterTransition(slide);
+        }
         setContentView(R.layout.activity_a);
         mRoot = (ViewGroup) findViewById(R.id.container_a);
         mButton1 = (Button) findViewById(R.id.button_1);
@@ -60,8 +73,10 @@ public class ActivityA extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         //Explode fade = new Explode();//new Fade()
         //fade.setDuration(5000);
-        TransitionManager.beginDelayedTransition(mRoot);//(mRoot, fade)
-        toggleHeight(mButton1, mButton2, mButton3, mButton4);//toggleVisibility
+        //TransitionManager.beginDelayedTransition(mRoot);//(mRoot, fade)
+        //toggleHeight(mButton1, mButton2, mButton3, mButton4);//toggleVisibility
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(this, null);
+        startActivity(new Intent(this, ActivityB.class), compat.toBundle());
 
     }
 
