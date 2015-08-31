@@ -254,6 +254,19 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void toggleTranslateFAB(float slideOffset) {
+        if (mFABMenu != null) {
+            if (mFABMenu.isOpen()) {
+                mFABMenu.close(true);
+            }
+            mFAB.setTranslationX(slideOffset * 250);
+        }
+    }
+
+    public void onDrawerSlide(float slideOffset) {
+        toggleTranslateFAB(slideOffset);
+    }
+
     public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         int icons[] = {R.drawable.ic_action_search,
                 R.drawable.ic_action_trending,

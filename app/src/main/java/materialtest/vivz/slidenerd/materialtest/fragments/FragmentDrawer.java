@@ -140,23 +140,26 @@ public class FragmentDrawer extends Fragment {
 
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
-                if (slideOffset < 0.6) {
-                    toolbar.setAlpha(1 - slideOffset);
-                }
+                super.onDrawerSlide(drawerView, slideOffset);
+                ((MainActivity) getActivity()).onDrawerSlide(slideOffset);
+                //if (slideOffset < 0.6) {
+                toolbar.setAlpha(1 - slideOffset / 2);
+                //}
             }
         };
-        if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
-            mDrawerlayout.openDrawer(containerView);
-        }
+        mDrawerlayout.setDrawerListener(mDrawerToggle);
         mDrawerlayout.post(new Runnable() {
             @Override
             public void run() {
                 // Este método pone 3 rayas al lado izquierdo de la pantalla para que al darle
                 // se pueda ver el nav
                 mDrawerToggle.syncState();
+                if (!mUserLearnedDrawer && !mFromSavedInstanceState) {
+                    mDrawerlayout.openDrawer(containerView);
+                }
             }
         });
-        mDrawerlayout.setDrawerListener(mDrawerToggle);
+
     }
 
     public interface ClickListener {
