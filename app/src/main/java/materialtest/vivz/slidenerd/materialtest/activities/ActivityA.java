@@ -12,14 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import materialtest.vivz.slidenerd.materialtest.R;
 
 public class ActivityA extends AppCompatActivity implements View.OnClickListener {
 
-    private ViewGroup mRoot;
-    private Button mButton1, mButton2, mButton3, mButton4;
+    //private Button mButton1, mButton2, mButton3, mButton4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +37,11 @@ public class ActivityA extends AppCompatActivity implements View.OnClickListener
             getWindow().setReenterTransition(slide);
         }
         setContentView(R.layout.activity_a);
-        mRoot = (ViewGroup) findViewById(R.id.container_a);
-        mButton1 = (Button) findViewById(R.id.button_1);
+        ViewGroup mRoot = (ViewGroup) findViewById(R.id.container_a);
+       /* mButton1 = (Button) findViewById(R.id.button_1);
         mButton2 = (Button) findViewById(R.id.button_2);
         mButton3 = (Button) findViewById(R.id.button_3);
-        mButton4 = (Button) findViewById(R.id.button_4);
+        mButton4 = (Button) findViewById(R.id.button_4);*/
         mRoot.setOnClickListener(this);
     }
 
@@ -80,7 +78,7 @@ public class ActivityA extends AppCompatActivity implements View.OnClickListener
 
     }
 
-    public void toggleVisibility(View... views) {
+   /* public void toggleVisibility(View... views) {
         for (View current : views) {
             if (current.getVisibility() == View.VISIBLE) {
                 current.setVisibility(View.INVISIBLE);
@@ -95,5 +93,5 @@ public class ActivityA extends AppCompatActivity implements View.OnClickListener
             params.width = 50;
             current.setLayoutParams(params);
         }
-    }
+    }*/
 }

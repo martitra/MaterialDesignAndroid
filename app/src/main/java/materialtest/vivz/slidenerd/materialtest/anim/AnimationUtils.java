@@ -1,7 +1,6 @@
 package materialtest.vivz.slidenerd.materialtest.anim;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -11,7 +10,7 @@ import com.daimajia.androidanimations.library.YoYo;
  */
 public class AnimationUtils {
 
-    public static void animate(RecyclerView.ViewHolder holder, boolean goesDown) {
+    public static void animate(RecyclerView.ViewHolder holder) {
 
         //YoYo.with(Techniques.Wobble)
         YoYo.with(Techniques.RubberBand)
@@ -34,7 +33,7 @@ public class AnimationUtils {
 //        animatorSet.start();
     }
 
-    public static void animateToolbar(View containerToolbar) {
+   /* public static void animateToolbar(View containerToolbar) {
 
-    }
+    }*/
 }

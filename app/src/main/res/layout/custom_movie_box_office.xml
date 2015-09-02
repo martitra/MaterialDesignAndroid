@@ -27,7 +27,7 @@
         android:alpha="0.87"
         android:gravity="end"
         android:padding="@dimen/size_half_byte"
-        android:text="Hitman Agent 47"
+        android:text="@string/txt_movie_dummy"
         android:textSize="@dimen/size_text_primary" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_below="@id/movieTitle"
         android:alpha="0.87"
         android:padding="@dimen/size_half_byte"
-        android:text="31-31-31"
+        android:text="@string/txt_date_dummy"
         android:textSize="@dimen/size_text_secondary" />
 
     <RatingBar

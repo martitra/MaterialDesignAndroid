@@ -2,6 +2,7 @@ package materialtest.vivz.slidenerd.materialtest.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,31 +24,29 @@ public class AdapterDrawer extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static final int TYPE_ITEM = 1;
     List<Information> data = Collections.emptyList();
     private LayoutInflater inflater;
-    private Context context;
+    //private Context context;
 
     public AdapterDrawer(Context context, List<Information> data) {
         inflater = LayoutInflater.from(context);
         this.data = data;
-        this.context = context;
+        //this.context = context;
     }
 
-    public void delete(int position) {
+    /*public void delete(int position) {
         data.remove(position);
         notifyItemRemoved(position);
-    }
+    }*/
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_HEADER) {
             View view = inflater.inflate(R.layout.drawer_header, parent, false);
             //Log.d("VIVZ", "OnCreatedHolder called");
-            HeaderHolder holder = new HeaderHolder(view);
-            return holder;
+            return new HeaderHolder(view);
         } else {
             View view = inflater.inflate(R.layout.custom_row, parent, false);
             //Log.d("VIVZ", "OnCreatedHolder called");
-            ItemHolder holder = new ItemHolder(view);
-            return holder;
+            return new ItemHolder(view);
         }
 
     }
@@ -64,7 +63,7 @@ public class AdapterDrawer extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof HeaderHolder) {
-
+            Log.d("VIVZ", "no Instance" + position);
         } else {
             ItemHolder itemHolder = (ItemHolder) holder;
             Information current = data.get(position - 1);//como tenemos un item de más ahora tenemos que poner -1

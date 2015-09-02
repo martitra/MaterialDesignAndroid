@@ -23,7 +23,6 @@
             android:id="@+id/materialTabHost"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_below="@id/app_bar"
             app:accentColor="@color/accentColor"
             app:hasIcons="true"
             app:iconColor="@android:color/white"

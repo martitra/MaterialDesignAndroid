@@ -35,10 +35,8 @@ public class FragmentDrawer extends Fragment {
 
     public static final String PREF_FILE_NAME = "testpref";
     public static final String KEY_USER_LEARNED_DRAWER = "user_learned_drawer";
-    private RecyclerView recyclerView;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerlayout;
-    private AdapterDrawer adapter;
     private boolean mUserLearnedDrawer;
     private boolean mFromSavedInstanceState;
     private View containerView;
@@ -94,8 +92,8 @@ public class FragmentDrawer extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
-        adapter = new AdapterDrawer(getActivity(), getData());
+        RecyclerView recyclerView = (RecyclerView) layout.findViewById(R.id.drawerList);
+        AdapterDrawer adapter = new AdapterDrawer(getActivity(), getData());
         //adapter.setClickListener(this);
         recyclerView.setBackgroundColor(Color.WHITE);
         recyclerView.setAdapter(adapter);

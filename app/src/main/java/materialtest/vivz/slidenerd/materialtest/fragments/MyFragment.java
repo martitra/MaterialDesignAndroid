@@ -22,7 +22,6 @@ import materialtest.vivz.slidenerd.materialtest.network.VolleySingleton;
  * Creado por soft12 el 12/08/2015.
  */
 public class MyFragment extends Fragment {
-    private TextView textView;
 
     public static MyFragment getInstance(int position) {
         MyFragment myFragment = new MyFragment();
@@ -36,7 +35,7 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_my, container, false);
-        textView = (TextView) layout.findViewById(R.id.position);
+        TextView textView = (TextView) layout.findViewById(R.id.position);
         Bundle bundle = getArguments();
         if (bundle != null) {
             textView.setText("The Page Number is " + bundle.getInt("position"));

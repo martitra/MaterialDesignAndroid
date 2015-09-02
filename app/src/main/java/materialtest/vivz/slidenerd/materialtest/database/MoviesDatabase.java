@@ -17,11 +17,10 @@ import materialtest.vivz.slidenerd.materialtest.pojo.Movie;
  * Creado por soft12 el 27/08/2015.
  */
 public class MoviesDatabase {
-    private MoviesHelper mHelper;
     private SQLiteDatabase mDatabase;
 
     public MoviesDatabase(Context context) {
-        mHelper = new MoviesHelper(context);
+        MoviesHelper mHelper = new MoviesHelper(context);
         mDatabase = mHelper.getWritableDatabase();
     }
 

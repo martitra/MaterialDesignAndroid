@@ -17,19 +17,17 @@ import materialtest.vivz.slidenerd.materialtest.pojo.Movie;
 public class TaskLoadMoviesBoxOffice extends AsyncTask<Void, Void, ArrayList<Movie>> {
 
     private BoxOfficeMoviesLoadedListener myComponent;
-    private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
 
     public TaskLoadMoviesBoxOffice(BoxOfficeMoviesLoadedListener myComponent) {
         this.myComponent = myComponent;
-        volleySingleton = VolleySingleton.getsInstance();
+        VolleySingleton volleySingleton = VolleySingleton.getsInstance();
         requestQueue = volleySingleton.getRequestQueue();
     }
 
     @Override
     protected ArrayList<Movie> doInBackground(Void... params) {
-        ArrayList<Movie> listMovies = MovieUtils.loadBoxOfficeMovies(requestQueue);
-        return listMovies;
+        return MovieUtils.loadBoxOfficeMovies(requestQueue);
     }
 
     @Override

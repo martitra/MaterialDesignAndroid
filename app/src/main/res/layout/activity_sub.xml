@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:background="@android:color/white"
         android:padding="16dp"
-        android:text="My View"
+        android:text="@string/my_view"
         android:textColor="@android:color/black" />
 
 

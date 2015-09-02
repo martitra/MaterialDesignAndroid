@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:onClick="addItem"
-            android:text="+" />
+            android:text="@string/button_plus" />
 
 
     </LinearLayout>

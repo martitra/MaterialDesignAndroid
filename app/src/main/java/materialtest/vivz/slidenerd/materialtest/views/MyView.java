@@ -29,9 +29,9 @@ public class MyView extends TextView {
         super(context, attrs, defStyleAttr);
     }
 
-    public MyView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    /*public MyView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-    }
+    }*/
 
     private void init() {
         paint = new Paint();

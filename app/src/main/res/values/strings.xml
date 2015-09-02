@@ -43,4 +43,12 @@
     <string name="title_activity_activity_shared">ActivitySharedA</string>
     <string name="title_activity_activity_shared_b">ActivitySharedB</string>
     <string name="action_activity_shared_a">Activity Shared A</string>
+    <string name="button_plus">+</string>
+    <string name="my_view">My View</string>
+    <string name="txt_movie_dummy">Hitman Agent 47</string>
+    <string name="txt_date_dummy">31–31–31</string>
+    <string name="txt_item">Item</string>
+    <string name="txt_vivz">Vivz</string>
+    <string name="email_vivz">slidenerd@gmail.com</string>
+    <string name="txt_number_page">The Page Number is 1</string>
 </resources>

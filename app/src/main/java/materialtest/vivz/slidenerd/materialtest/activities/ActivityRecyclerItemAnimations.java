@@ -17,8 +17,6 @@ import materialtest.vivz.slidenerd.materialtest.adapters.AdapterRecyclerItemAnim
 public class ActivityRecyclerItemAnimations extends AppCompatActivity {
 
     private EditText mInput;
-    private RecyclerView mRecyclerView;
-    private Toolbar mToolbar;
     private AdapterRecyclerItemAnimations mAdapter;
 
     @Override
@@ -26,7 +24,7 @@ public class ActivityRecyclerItemAnimations extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_item_animations);
 
-        mToolbar = (Toolbar) findViewById(R.id.app_bar);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -34,7 +32,7 @@ public class ActivityRecyclerItemAnimations extends AppCompatActivity {
         }
         mInput = (EditText) findViewById(R.id.text_input);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerAnimatedItems);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerAnimatedItems);
         mAdapter = new AdapterRecyclerItemAnimations(this);
         //Animations
         // + Animaciones en https://github.com/wasabeef/recyclerview-animators

@@ -23,7 +23,6 @@ import materialtest.vivz.slidenerd.materialtest.fragments.MyFragment;
  */
 public class ActivityUsingTabLibrary extends AppCompatActivity implements MaterialTabListener {
 
-    private Toolbar toolbar;
     private MaterialTabHost tabHost;
     private ViewPager viewPager;
 
@@ -32,7 +31,7 @@ public class ActivityUsingTabLibrary extends AppCompatActivity implements Materi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_using_tab_library);
 
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);

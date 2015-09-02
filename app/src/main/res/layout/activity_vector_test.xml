@@ -13,6 +13,7 @@
         android:id="@+id/vectorImage"
         android:layout_width="192dp"
         android:layout_height="192dp"
-        android:background="@drawable/vector_android" />
+        android:background="@drawable/vector_android"
+        android:contentDescription="@string/hello_world" />
 
 </LinearLayout>

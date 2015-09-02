@@ -9,15 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkError;
-import com.android.volley.NoConnectionError;
-import com.android.volley.ParseError;
-import com.android.volley.ServerError;
-import com.android.volley.TimeoutError;
-import com.android.volley.VolleyError;
 
 import java.util.ArrayList;
 
@@ -43,8 +34,7 @@ public class FragmentBoxOffice extends Fragment implements SortListener,
     private ArrayList<Movie> listMovies = new ArrayList<>();
     private AdapterBoxOffice adapterBoxOffice;
     private SwipeRefreshLayout mSwipeRefreshLayout;
-    private RecyclerView mRecyclerMovies;
-    private TextView textVolleyError;
+    //private TextView textVolleyError;
     private MovieSorter movieSorter;
 
     public FragmentBoxOffice() {
@@ -77,12 +67,10 @@ public class FragmentBoxOffice extends Fragment implements SortListener,
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
 
     }
 
-    private void handleVolleyError(VolleyError error) {
+    /*private void handleVolleyError(VolleyError error) {
         textVolleyError.setVisibility(View.VISIBLE);
 
         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
@@ -96,17 +84,17 @@ public class FragmentBoxOffice extends Fragment implements SortListener,
         } else if (error instanceof ParseError) {
             textVolleyError.setText(R.string.error_parser);
         }
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_box_office, container, false);
-        textVolleyError = (TextView) view.findViewById(R.id.textVolleyError);
+        //textVolleyError = (TextView) view.findViewById(R.id.textVolleyError);
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeMoviesHits);
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        mRecyclerMovies = (RecyclerView) view.findViewById(R.id.listMovieHits);
+        RecyclerView mRecyclerMovies = (RecyclerView) view.findViewById(R.id.listMovieHits);
         mRecyclerMovies.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         adapterBoxOffice = new AdapterBoxOffice(getActivity());

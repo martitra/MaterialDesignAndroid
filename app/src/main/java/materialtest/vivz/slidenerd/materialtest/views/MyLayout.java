@@ -22,9 +22,9 @@ public class MyLayout extends FrameLayout {
         init();
     }
 
-    public MyLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    /*public MyLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-    }
+    }*/
 
     public MyLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);

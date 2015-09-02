@@ -28,9 +28,8 @@ public class AdapterRecyclerItemAnimations extends RecyclerView.Adapter<AdapterR
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View row = mLayoutInflater.inflate(R.layout.custom_row_item_animations, parent, false);
-        Holder holder = new Holder(row);
 
-        return holder;
+        return new Holder(row);
     }
 
     @Override
@@ -50,13 +49,13 @@ public class AdapterRecyclerItemAnimations extends RecyclerView.Adapter<AdapterR
         notifyItemInserted(mListaData.size());
     }
 
-    public void removeItem(String item) {
+    /*public void removeItem(String item) {
         int position = mListaData.indexOf(item);
         if (position != -1) {
             mListaData.remove(item);
             notifyItemRemoved(position);
         }
-    }
+    }*/
 
     public void removeItem(int position) {
         mListaData.remove(position);

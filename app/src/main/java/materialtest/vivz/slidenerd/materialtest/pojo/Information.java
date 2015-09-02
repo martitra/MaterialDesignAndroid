@@ -1,7 +1,7 @@
 package materialtest.vivz.slidenerd.materialtest.pojo;
 
 /**
- * Created by soft12 on 10/08/2015.
+ * Creado por soft12 el 10/08/2015.
  */
 public class Information {
 

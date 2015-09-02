@@ -24,25 +24,21 @@ import materialtest.vivz.slidenerd.materialtest.tabs.SlidingTabLayout;
  */
 public class ActivityWithSlidingTabLayout extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private ViewPager mPager;
-    private SlidingTabLayout mTabs;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_with_sliding_tab_layout);
 
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        mPager = (ViewPager) findViewById(R.id.pager);
+        ViewPager mPager = (ViewPager) findViewById(R.id.pager);
         mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
-        mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
+        SlidingTabLayout mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
         mTabs.setCustomTabView(R.layout.custom_tab_view, R.id.tabText);
         mTabs.setDistributeEvenly(true);
 
@@ -62,11 +58,8 @@ public class ActivityWithSlidingTabLayout extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
 
     class MyPagerAdapter extends FragmentPagerAdapter {
@@ -81,8 +74,7 @@ public class ActivityWithSlidingTabLayout extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            MyFragment myFragment = MyFragment.getInstance(position);
-            return myFragment;
+            return MyFragment.getInstance(position);
         }
 
         @Override

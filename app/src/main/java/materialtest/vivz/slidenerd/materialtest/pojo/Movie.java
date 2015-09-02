@@ -51,7 +51,7 @@ public class Movie implements Parcelable {
     }
 
 
-    public Movie(Long id, String title, Date releaseDateTheater,
+    /*public Movie(Long id, String title, Date releaseDateTheater,
                  int audienceScore, String synopsis, String urlThumbnail,
                  String urlSelf, String urlCast, String urlReviews, String urlSimilar) {
         this.id = id;
@@ -64,7 +64,7 @@ public class Movie implements Parcelable {
         this.urlCast = urlCast;
         this.urlReviews = urlReviews;
         this.urlSimilar = urlSimilar;
-    }
+    }*/
 
     public Long getId() {
         return id;

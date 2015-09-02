@@ -26,9 +26,9 @@ public class MyApplication extends Application {
 
     private static MoviesDatabase mDatabase;
 
-    public static MyApplication getInstance() {
-        return sInstance;
-    }
+    //public static MyApplication getInstance() {
+    //    return sInstance;
+    //}
 
     public static Context getAppContext() {
         return sInstance.getApplicationContext();

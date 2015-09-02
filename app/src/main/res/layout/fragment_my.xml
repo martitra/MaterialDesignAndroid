@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:text="The Page Number is 1"
+    android:text="@string/txt_number_page"
     android:textColor="@color/colorPrimaryText"
     android:textSize="20sp">
 

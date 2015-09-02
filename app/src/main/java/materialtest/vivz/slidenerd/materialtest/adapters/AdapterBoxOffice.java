@@ -30,14 +30,12 @@ public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.View
 
     private LayoutInflater layoutInflater;
     private ArrayList<Movie> listMovies = new ArrayList<>();
-    private VolleySingleton volleySingleton;
     private ImageLoader imageLoader;
     private DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
-    private int previousPosition = 0;
 
     public AdapterBoxOffice(Context context) {
         layoutInflater = LayoutInflater.from(context);
-        volleySingleton = VolleySingleton.getsInstance();
+        VolleySingleton volleySingleton = VolleySingleton.getsInstance();
         imageLoader = volleySingleton.getImageLoader();
 
     }
@@ -51,8 +49,7 @@ public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.View
     @Override
     public ViewHolderBoxOffice onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.custom_movie_box_office, parent, false);
-        ViewHolderBoxOffice viewHolder = new ViewHolderBoxOffice(view);
-        return viewHolder;
+        return new ViewHolderBoxOffice(view);
     }
 
     @Override
@@ -77,10 +74,11 @@ public class AdapterBoxOffice extends RecyclerView.Adapter<AdapterBoxOffice.View
             holder.movieAudienceScore.setAlpha(1.0F);
         }
 
+        int previousPosition = 0;
         if (position > previousPosition) {
-            AnimationUtils.animate(holder, true);
+            AnimationUtils.animate(holder);
         } else {
-            AnimationUtils.animate(holder, false);
+            AnimationUtils.animate(holder);
         }
 
 

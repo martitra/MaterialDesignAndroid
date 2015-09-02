@@ -14,7 +14,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:contentDescription="Description"
+        android:contentDescription="@string/hello_world"
         android:src="@drawable/ic_number1" />
 
     <TextView
@@ -23,6 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="72dp"
-        android:text="Dummy Text" />
+        android:layout_marginStart="72dp"
+        android:text="@string/hello_world" />
 </RelativeLayout>
